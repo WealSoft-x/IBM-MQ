@@ -1,0 +1,15 @@
+version: "2"
+services:
+  ibmmq:
+    image: ibmcom/mq
+    container_name: ibmmq
+    ports:
+      - "1414:1414"
+      - "9443:9443"
+    volumes:
+      - ./docker-entrypoint.sh:/tmp/docker-entrypoint.sh
+    environment:
+      LICENSE: accept
+      MQ_QMGR_NAME: QMG
+      MQ_APP_PASSWORD: passw0rd
+    entrypoint: /tmp/docker-entrypoint.sh
